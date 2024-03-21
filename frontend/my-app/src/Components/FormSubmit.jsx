@@ -24,7 +24,7 @@ const FormSubmit = () => {
     try {
       const timestamp = new Date().toLocaleString();
       const formDataWithTimestamp = { ...formData, timestamp };
-      const response = await fetch("http://localhost:8080/create", {
+      const response = await fetch("https://fair-erin-millipede-gear.cyclic.app/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,8 +36,10 @@ const FormSubmit = () => {
       console.log("Success:", result);
       alert("Form data added Succesfully!");
       setShowSubmitted(true);
+      setFormData(initialValue)
     } catch (err) {
       console.log(err);
+      alert("something went wrong!")
     }
   };
 
@@ -60,6 +62,7 @@ const FormSubmit = () => {
               placeholder="username"
               onChange={handleChange}
               className="border border-blue-400 w-full px-1 py-2 rounded-xl "
+              required
             />
           </label>
           <br />
