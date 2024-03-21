@@ -2,8 +2,11 @@ const express = require("express");
 const { connection } = require("./config/db");
 const { formModel } = require("./model/form.model");
 const app = express();
+const cors=require("cors");
 
 app.use(express.json());
+
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Form api");
@@ -19,7 +22,9 @@ app.get("/read",async(req,res)=>{
 
 // add data usin post
 app.post("/create", async (req, res) => {
-  const { username, codeLang, stdin, sourceCode, timeStamp } = req.body;
+  const { username, codeLang, stdin, sourceCode } = req.body;
+
+  const timeStamp = new Date().toLocaleString();
 
   const formData = new formModel({
     username,
