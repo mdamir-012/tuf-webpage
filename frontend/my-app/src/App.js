@@ -1,9 +1,10 @@
 import "./App.css";
+import FormSubmit from "./Components/FormSubmit";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className="bg-red-600">Form</h1>
+    <div className=" w-full h-screen bg-cyan-200">
+      <FormSubmit />
     </div>
   );
 }
